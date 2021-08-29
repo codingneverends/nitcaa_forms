@@ -105,7 +105,27 @@ function Begin(bo) {
 }
 
 var name = "";
-
+function validateName(){
+    var pattern = /^[A-Za-z]+([\ A-Za-z]+)*/;
+    var name = document.getElementById('name').value;
+    if(!pattern.test(name)){
+        alert('Please enter your full name (first & last name).');
+        document.getElementById('name').focus();
+        return false;
+    }else{
+        SetName();
+        return true;
+    }
+}
+function EnableDisable(inputString) {
+    var btnSubmit = document.getElementById("Next");
+ 
+    if (inputString.value.trim() != "") {
+        btnSubmit.disabled = false;
+    } else {
+        btnSubmit.disabled = true;
+    }
+}
 function NamePage() {
     App.sethtml(`
     <div class="dfc">
@@ -113,12 +133,12 @@ function NamePage() {
             Tell Us Who you are?
             <br>
             <br>
-            <input id="name" placeholder="Your Name" value='${name}'>
+            <input id="name" placeholder="Your Name" value='${name}' onkeyup="EnableDisable(this)">
             <br>
             <br>
             <div class="dfc">
                 <button onclick="Begin(true)">Back</button>
-                <button onclick="SetName()">Next</button>
+                <button id=Next onclick="validateName()" disabled="disabled">Next</button>
             </div>
         </div>
     </div>`);
