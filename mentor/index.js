@@ -105,27 +105,30 @@ function Begin(bo) {
 }
 
 var name = "";
-function validateName(){
-    var pattern = /^[A-Za-z]+([\ A-Za-z]+)*/;
-    var name = document.getElementById('name').value;
-    if(!pattern.test(name)){
+
+function validateName() {
+    var _pattern = /^[A-Za-z]+([A-Za-z]+)*$/;
+    var _name = document.getElementById('name').value;
+    if (!_pattern.test(_name)) {
         alert('Please enter your full name (first & last name).');
         document.getElementById('name').focus();
         return false;
-    }else{
+    } else {
         SetName();
         return true;
     }
 }
+
 function EnableDisable(inputString) {
     var btnSubmit = document.getElementById("Next");
- 
+
     if (inputString.value.trim() != "") {
         btnSubmit.disabled = false;
     } else {
         btnSubmit.disabled = true;
     }
 }
+
 function NamePage() {
     App.sethtml(`
     <div class="dfc">
