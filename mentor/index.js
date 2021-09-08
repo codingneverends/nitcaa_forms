@@ -166,7 +166,7 @@ function SetName(bo = false) {
     App.sethtml(`
         <div class="dfc">
             <div class="introbox">
-                Hey <sp>${name}</sp> <br>  Enter email id and phone number ( with country code if not Indian ) ${ismentor?`graduation year at NITC/REC and how many mentees you can hold.`:`year of study(eg - 3rd yr) and NITC Roll number`}   .
+                Hey <sp>${name}</sp> <br>  Enter email id and phone number ( with country code ) ${ismentor?`graduation year at NITC/REC and how many mentees you can hold.`:`year of study(eg - 3rd yr) and NITC Roll number`}   .
                 <br>
                 <br>
                 <input id="email" placeholder="Email id" value='${mail}'>
@@ -175,7 +175,7 @@ function SetName(bo = false) {
                 <input id="phno" type="tel" placeholder="Phone Number" value=''>
                 <br>
                 <br>
-                <input id="grad" placeholder="year" value='${gra_yr}'>
+                <input id="grad" placeholder="graduation year" value='${gra_yr}'>
                 <br>
                 <br>
                 ${ismentor?`
