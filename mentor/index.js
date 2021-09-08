@@ -107,7 +107,7 @@ function Begin(bo) {
 var name = "";
 
 function validateName() {
-    var _pattern = /^[A-Za-z]+([A-Za-z]+)*$/;
+    var _pattern = /^[A-Za-z]+([A-Z a-z]+)*$/;
     var _name = document.getElementById('name').value;
     if (!_pattern.test(_name)) {
         alert('Please enter your full name (first & last name).');
@@ -248,7 +248,7 @@ function SetMandP(bo = false) {
             console.log("Enter your Mail.");
             return;
         }
-        if (!_phno || _phno == undefined || _phno == null || _phno.length < 1 || _phno.match(/^[0-9]+([0-9]+)*$/)==null) {
+        if (!_phno || _phno == undefined || _phno == null || _phno.length != 10 || _phno.match(/^[0-9]+([0-9]+)*$/)==null) {
             console.log("Enter your Phone Number.");
             return;
         }
