@@ -444,7 +444,7 @@ function broadArea(bo = false) {
     App.sethtml(`
         <div class="dfc">
             <div class="introbox">
-                Choose your broad areas of expertise
+            Choose your broad areas of expertise (Please select your options very carefully, as these will be used to assign you mentees with similar interests). You may select multiple options.
                 <br>
                 <br>
                 ${_opts}
@@ -601,8 +601,8 @@ function OthArea(bo = false) {
                 <div class="dfc">
                     <button onclick="NarrowArea(true)">Back</button>
                     ${ismentor?
-                        `<button onclick="LinkdinData()">Next</button>`
-                        :`<button onclick="Othdatafin()">Next</button>`}
+                        `<button onclick="LinkdinData()">NextSkip</button>`
+                        :`<button onclick="Othdatafin()">Next/Skip</button>`}
                 </div>
             </div>
         </div>
@@ -629,17 +629,19 @@ function LinkdinData(bo = false) {
                 <br>
                 <div class="dfc">
                     <button onclick="OthArea(true)">Back</button>
-                    <button onclick="Other_ans()">Next</button>
+                    <button onclick="Other_ans()">Next/Skip</button>
                 </div>
             </div>
         </div>
     `);
 }
 
-function Other_ans() {
-    oth_links = document.getElementById("oth_links").value;
-    if (oth_links.length < 1) {
-        return;
+function Other_ans(def=false) {
+    if(!def){
+        oth_links = document.getElementById("oth_links").value;
+        if (oth_links.length < 1) {
+            oth_links="not given";
+        }
     }
     App.sethtml(`
         <div class="dfc">
@@ -647,18 +649,58 @@ function Other_ans() {
             Any additional details about you that you want to share with mentees? (e.g., Where do you work? Is there any specific topic that you would like to help the mentee with?)
                 <br>
                 <br>
-                <input id="oth_details" type="text" placeholder="your answer">
+                <input id="oth_details" type="text" placeholder="your answer" value='${oth_details=="not given"?"":oth_details}'>
                 <br>
                 <br>
                 <div class="dfc">
                     <button onclick="LinkdinData(true)">Back</button>
-                    <button onclick="Submit()">Next</button>
+                    <button onclick="r_page()">Next/Skip</button>
                 </div>
             </div>
         </div>
     `);
 }
-
+var oth_details="";
+function r_page(){
+    oth_details=document.getElementById("oth_details").value;
+    if(oth_details.length<1)
+        oth_details="not given";
+    App.sethtml(`
+        <div class="dfc">
+            <div class="introbox">
+                <h2>Summary</h2>
+                <div class="grid-container">
+                    <div class="grid-item r">Name</div>
+                    <div class="grid-item">${name}</div>
+                    <div class="grid-item r">Email id</div>
+                    <div class="grid-item">${mail}</div>
+                    <div class="grid-item r">Phone Number</div>
+                    <div class="grid-item">${phno}</div>
+                    <div class="grid-item r">Graduation Year</div>
+                    <div class="grid-item">${gra_yr}</div>
+                    <div class="grid-item r">Number of students you can Mentor</div>
+                    <div class="grid-item">${max_hold}</div>
+                    <div class="grid-item r">Department</div>
+                    <div class="grid-item">${DEPT}</div>
+                    <div class="grid-item r">Broad areas of expertise</div>
+                    <div class="grid-item">${broad_data}</div>
+                    <div class="grid-item r">Narrow areas of expertise</div>
+                    <div class="grid-item">${narrow_data}</div>
+                    <div class="grid-item r">Linkedin or Portfolio</div>
+                    <div class="grid-item">${oth_links}</div>
+                    <div class="grid-item r">Other additional details</div>
+                    <div class="grid-item">${oth_details}</div>
+                </div>
+                <br>
+                <br>
+                <div class="dfc">
+                    <button onclick="Other_ans(true)">Back</button>
+                    <button onclick="Submit()">Submit</button>
+                </div>
+            </div>
+        </div>
+    `);
+}
 function Othdatafin(){
     App.sethtml(`
         <div class="dfc">
@@ -730,7 +772,6 @@ function _Submit() {
 }
 
 function Submit() {
-    var oth_details = document.getElementById("oth_details").value;
     var json = {};
     var x_json={};
     json["name"] = name;
