@@ -624,7 +624,7 @@ function LinkdinData(bo = false) {
                 Please add the link to any of the above. Please note that providing this link will make it easy for students to look you up and find whether they would like to receive mentoring from you.
                 <br>
                 <br>
-                <input id="oth_links" type="text" placeholder="your answer" value='${oth_links}'>
+                <input id="oth_links" type="text" placeholder="your answer" value='${oth_links=="not given"?"":oth_links}'>
                 <br>
                 <br>
                 <div class="dfc">
@@ -654,7 +654,7 @@ function Other_ans(def=false) {
                 <br>
                 <div class="dfc">
                     <button onclick="LinkdinData(true)">Back</button>
-                    <button onclick="r_page()">Next/Skip</button>
+                    <button onclick="r_page()">Review</button>
                 </div>
             </div>
         </div>
@@ -668,7 +668,7 @@ function r_page(){
     App.sethtml(`
         <div class="dfc">
             <div class="introbox">
-                <h2>Summary</h2>
+                <h2>Review</h2>
                 <div class="grid-container">
                     <div class="grid-item r">Name</div>
                     <div class="grid-item">${name}</div>
