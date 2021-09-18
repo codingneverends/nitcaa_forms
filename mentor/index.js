@@ -62,7 +62,7 @@ function Begin(bo) {
     App.sethtml(`
     <div class="dfc">
         <div class="introbox">
-            <h2>Alumni/Mentor Sign-up NITCAA <br> Mentoring Program (NITCAMP) 2021-22</h2>
+            <h2>Alumni/Mentor Sign-up for NITC Alumni <br> Mentoring Program (NITCAMP) 2021-22</h2>
             <br>- All NITC/RECC alumni are welcome to fill this form. 
             <br>- This form will take no more than 2 minutes to complete. 
             <br>- We thank you for your time!
@@ -830,7 +830,7 @@ function Submit() {
             Thank you ,
             <sp>${name.split(" ")[0]}</sp> for your response.
             <br>
-            <br> Data entered successfully , if any corrections you can enter data from the beginning . please reload the page.
+            <br> Data entered successfully. if there are any corrections, you can enter data from the beginning after reloading the page. 
             Last entered details will be considered.
         </div>
     </div>`);
