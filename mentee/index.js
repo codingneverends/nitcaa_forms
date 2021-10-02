@@ -9,15 +9,11 @@ firebase.initializeApp({
 });
 var ismentor = false;
 const departments = ["Architecture", "Biotechnology", "Chemical Engineering", "Civil Engineering", "Computer Science and Engineering", "Electrical and Electronics Engineering", "Electronics and Communication Engineering", "Engineering Physics", "Mathematics", "Mechanical Engineering", "Nanoscience and Technology", "Production Engineering", "Management Studies", "Others"];
-const broadAreas = ["Admission Prep - SOP(In India)", "Admission Prep - SOP(Outside India)", "Core engineering paths (leading into narrow areas of expertise)", "Course/electives selection", "Exam Prep - CAT, Others(In India)", "Exam Prep - GMAT, Others(Outside India)", /* "Exam Prep - GRE, GMAT, TOEFL, Others", */ "Finding Jobs/Internships", "In-school projects", "Non-engineering career paths/success stories", "Professional ( MBA in India)", "Professional ( MBA outside India)", "Professional (M.Tech in India)", "Professional (M.Tech outside India)", "Research (M.S/Ph.D in India)", "Research (M.S/Ph.D outside India)", "Resume/Interview Prep", "Startups/Entrepreneurship", "Technical skills training (eg: industry best practices, coding skills etc.)"];
-const _broadAreas = ["Admission_Prep___SOP_In_India", "Admission_Prep___SOP_outside_India", "Core_engineering_paths__leading_into_narrow_areas_of_expertise_", "Course_electives_selection", "Exam_Prep___CAT__Others_In_India", "Exam_Prep___GMAT__Others_Outside_India", /* "Exam_Prep___GRE__GMAT__TOEFL__Others", */ "Finding_Jobs_Internships", "In_school_projects", "Non_engineering_career_paths_success_stories", "Professional_MBA_in_India", "Professional_MBA_outside_India", "Professional__M_Tech_in_India", "Professional__M_Tech_outside_India", "Research__M_S_Ph_D_in_India", "Research__M_S_Ph_D_outside_India", "Resume_Interview_Prep", "Startups_Entrepreneurship", "Technical_skills_training__eg__industry_best_practices__coding_skills_etc__"];
-const NarrowAreas = ["Aerospace Structures/Aerodynamics", "Algebra", "Analog and Mixed Signal", "Applied Statistics", "Artificial Intelligence, Machine Learning, Data Science", "Autonomous Driving", "Behavioral Economics", "Biochemistry", "Bioengineering", "Bioethics", "Bioinspired Materials and Systems", "Biomaterials and biophysics", "Biomedical Imaging, Sensing and Genomic Signal Processing", "Biophysics", "Building Science/Technology", "Business Analytics", "Calculus and analysis", "Catalysis", "Clean energy", "Climate change and sustainability", "Cloud Computing, Big data, Distributed systems", "Coastal/Ocean Engineering", "Combinatorics", "Communication", "Computational mechanics", "Computational physics and numerical methods", "Computer Architecture, Operating Systems", "Computer networks, security", "Construction management", "Construction Methods/Materials", "Construction Science/Technology", "Critical History", "Cryptography", "Data Science & Analytics", "Data Science/Analytics", "Design Theory", "Device Science and Nanotechnology", "Digital Signal Processing", "Digital VLSI", "Dynamical systems and differential equations", "Earthquake engineering", "Electrochemistry", "Electromagnetics and Microwaves", "Electronic, Magnetic and Photonic Materials", "Electronics & Photonics", "Embedded Systems", "Energy and Power, Power Electronics", "Energy Management", "Energy Production and Storage", "Enviromental engineering", "Environmental Science", "Enzymology", "Fluid Mechanics", "Fluid mechanics and machinery", "Game theory", "Genetically modified food", "geographic information systems (GIS)", "Geology", "Geometry and topology", "Geophysics", "Geotechnical engineering", "Gerontology", "Green Technologies", "Historic Conservation/Preservation", "Hydraulics", "Industrial Design", "Industrial Engineering", "Information Science and Systems", "Information theory and signal processing", "Interdisciplinary physics and engineering", "Liquids and soft matter", "Logic", "Machine design", "Machine Learning for Biophysics", "Machine Learning for Polymer Science", "Machine Learning for Process Control", "Manufacturing/Production Engineering", "Marine engineering and merchant shipping", "Materials for energy", "Materials Science", "Materials/Pavements", "Mathematical physics", "Mechatronics and robotics", "Membranes and Separations", "Microscopy and advanced imaging", "Molecular Simulations", "Nanobiotechnology", "Nanoscale science and technology", "Nanotechnology", "Number theory", "Numerical Methods", "Operations Engineering & Management", "Operations research", "Operations Research & Optimization", "Optimization", "Organization Development & Change Management", "Petroleum/ Oil & Gas/ Petrochemical/ Mining engineering", "Pharmacology", "Photonics, optoelectronics and device physics", "Polymer Science", "Power Generation and Transmission", "Probability and statistics", "Process Control", "Product Design", "Quality & Reliability Engineering", "Quantum computation and information", "Quantum Mechanics", "Reaction Engineering", "Safety Engineering", "Signals and Systems", "Soil mechanics and Foundation Engineering", "Startups", "Statistical Mechanics", "Stem cell therapy", "Structural Dynamics", "Structural Engineering", "Supply Chain Management", "Surface Science", "Systems Engineering", "Systems Simulation", "Theory of computation", "Therrmal Engineering", "Tissue engineering", "Transportation and Mobility", "Transportation Engineering", "Tunnel Engineering", "Ultrafast physics", "Urban Planning", "Urban Planning/Design", "Water Resources Engineering"];
-const _NarrowAreas = ["Aerospace_Structures_Aerodynamics", "Algebra", "Analog_and_Mixed_Signal", "Applied_Statistics", "Artificial_Intelligence__Machine_Learning__Data_Science", "Autonomous_Driving", "Behavioral_Economics", "Biochemistry", "Bioengineering", "Bioethics", "Bioinspired_Materials_and_Systems", "Biomaterials_and_biophysics", "Biomedical_Imaging__Sensing_and_Genomic_Signal_Processing", "Biophysics", "Building_Science_Technology", "Business_Analytics", "Calculus_and_analysis", "Catalysis", "Clean_energy", "Climate_change_and_sustainability", "Cloud_Computing__Big_data__Distributed_systems", "Coastal_Ocean_Engineering", "Combinatorics", "Communication", "Computational_mechanics", "Computational_physics_and_numerical_methods", "Computer_Architecture__Operating_Systems", "Computer_networks__security", "Construction_management", "Construction_Methods_Materials", "Construction_Science_Technology", "Critical_History", "Cryptography", "Data_Science___Analytics", "Data_Science_Analytics", "Design_Theory", "Device_Science_and_Nanotechnology", "Digital_Signal_Processing", "Digital_VLSI", "Dynamical_systems_and_differential_equations", "Earthquake_engineering", "Electrochemistry", "Electromagnetics_and_Microwaves", "Electronic__Magnetic_and_Photonic_Materials", "Electronics___Photonics", "Embedded_Systems", "Energy_and_Power__Power_Electronics", "Energy_Management", "Energy_Production_and_Storage", "Enviromental_engineering", "Environmental_Science", "Enzymology", "Fluid_Mechanics", "Fluid_mechanics_and_machinery", "Game_theory", "Genetically_modified_food", "geographic_information_systems__GIS_", "Geology", "Geometry_and_topology", "Geophysics", "Geotechnical_engineering", "Gerontology", "Green_Technologies", "Historic_Conservation_Preservation", "Hydraulics", "Industrial_Design", "Industrial_Engineering", "Information_Science_and_Systems", "Information_theory_and_signal_processing", "Interdisciplinary_physics_and_engineering", "Liquids_and_soft_matter", "Logic", "Machine_design", "Machine_Learning_for_Biophysics", "Machine_Learning_for_Polymer_Science", "Machine_Learning_for_Process_Control", "Manufacturing_Production_Engineering", "Marine_engineering_and_merchant_shipping", "Materials_for_energy", "Materials_Science", "Materials_Pavements", "Mathematical_physics", "Mechatronics_and_robotics", "Membranes_and_Separations", "Microscopy_and_advanced_imaging", "Molecular_Simulations", "Nanobiotechnology", "Nanoscale_science_and_technology", "Nanotechnology", "Number_theory", "Numerical_Methods", "Operations_Engineering___Management", "Operations_research", "Operations_Research___Optimization", "Optimization", "Organization_Development___Change_Management", "Petroleum__Oil___Gas__Petrochemical__Mining_engineering", "Pharmacology", "Photonics__optoelectronics_and_device_physics", "Polymer_Science", "Power_Generation_and_Transmission", "Probability_and_statistics", "Process_Control", "Product_Design", "Quality___Reliability_Engineering", "Quantum_computation_and_information", "Quantum_Mechanics", "Reaction_Engineering", "Safety_Engineering", "Signals_and_Systems", "Soil_mechanics_and_Foundation_Engineering", "Startups", "Statistical_Mechanics", "Stem_cell_therapy", "Structural_Dynamics", "Structural_Engineering", "Supply_Chain_Management", "Surface_Science", "Systems_Engineering", "Systems_Simulation", "Theory_of_computation", "Therrmal_Engineering", "Tissue_engineering", "Transportation_and_Mobility", "Transportation_Engineering", "Tunnel_Engineering", "Ultrafast_physics", "Urban_Planning", "Urban_Planning_Design", "Water_Resources_Engineering"];
-const _Brach_rel = ['Civil Engg', 'Mathematics', 'CSE EEE ECE', 'Civil Engg', 'CSE EEE ECE', 'CSE EEE ECE', 'Mech Engg, Prod Engg', 'Chemical Engg', 'Chemical Engg', 'Biotechnology', 'Material Science', 'Engg Phy', 'CSE EEE ECE', 'Chemical Engg', 'Architecture', 'Mech Engg, Prod Engg', 'Mathematics', 'Chemical Engg', 'Mech Engg, Prod Engg', 'Miscellaneous topics',
-    'CSE EEE ECE', 'Civil Engg', 'Mathematics', 'CSE EEE ECE', 'Civil Engg', 'Engg Phy', 'CSE EEE ECE', 'CSE EEE ECE', 'Civil Engg', 'Architecture', 'Architecture', 'Architecture',
-    'CSE EEE ECE', 'Mech Engg, Prod Engg', 'Civil Engg', 'Architecture', 'CSE EEE ECE', 'CSE EEE ECE', 'CSE EEE ECE', 'Mathematics', 'Civil Engg', 'Chemical Engg', 'CSE EEE ECE', 'Chemical Engg', 'Material Science', 'CSE EEE ECE', 'CSE EEE ECE', 'Mech Engg, Prod Engg', 'Material Science', 'Civil Engg', 'Chemical Engg', 'Biotechnology', 'Chemical Engg', 'Mech Engg, Prod Engg', 'Mathematics', 'Biotechnology', 'Civil Engg', 'Civil Engg', 'Mathematics', 'Engg Phy', 'Civil Engg', 'Biotechnology', 'Material Science', 'Architecture', 'Civil Engg', 'Architecture', 'Mech Engg, Prod Engg', 'CSE EEE ECE', 'Mathematics', 'Engg Phy', 'Engg Phy', 'Mathematics', 'Mech Engg, Prod Engg', 'Chemical Engg', 'Chemical Engg', 'Chemical Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Engg Phy', 'Chemical Engg', 'Civil Engg', 'Mathematics', 'Mech Engg, Prod Engg', 'Chemical Engg', 'Engg Phy', 'Chemical Engg', 'Biotechnology', 'Engg Phy', 'CSE EEE ECE', 'Mathematics', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Biotechnology', 'Engg Phy', 'Chemical Engg', 'CSE EEE ECE', 'Mathematics', 'Chemical Engg', 'Architecture',
-    'Mech Engg, Prod Engg', 'Engg Phy', 'Chemical Engg', 'Chemical Engg', 'Civil Engg', 'CSE EEE ECE', 'Civil Engg', 'Miscellaneous topics', 'Chemical Engg', 'Biotechnology', 'Civil Engg', 'Civil Engg', 'Mech Engg, Prod Engg', 'Chemical Engg', 'Civil Engg', 'Mech Engg, Prod Engg', 'Mathematics', 'Mech Engg, Prod Engg', 'Biotechnology', 'Mech Engg, Prod Engg', 'Civil Engg', 'Civil Engg', 'Engg Phy', 'Architecture', 'Architecture', 'Civil Engg'
-];
+const broadAreas = ["Admission Prep - SOP(In India)", "Admission Prep - SOP(Outside India)", "Core engineering paths (leading into narrow areas of expertise)", "Course/electives selection", "Exam Prep - CAT, Others(In India)", "Exam Prep - GMAT, GRE, Others(Outside India)", /* "Exam Prep - GRE, GMAT, TOEFL, Others", */ "Finding Jobs/Internships", "In-school projects", "Non-engineering career paths/success stories", "Professional ( MBA in India)", "Professional ( MBA outside India)", "Professional (Masters in India)", "Professional (Masters outside India)", "Research (Masters/Ph.D in India)", "Research (Masters/Ph.D outside India)", "Resume/Interview Prep", "Startups/Entrepreneurship", "Technical skills training (eg: industry best practices, coding skills etc.)", "other"];
+const _broadAreas = ["Admission_Prep___SOP_In_India", "Admission_Prep___SOP_outside_India", "Core_engineering_paths__leading_into_narrow_areas_of_expertise_", "Course_electives_selection", "Exam_Prep___CAT__Others_In_India", "Exam_Prep___GMAT__GRE__Others_Outside_India", /* "Exam_Prep___GRE__GMAT__TOEFL__Others", */ "Finding_Jobs_Internships", "In_school_projects", "Non_engineering_career_paths_success_stories", "Professional_MBA_in_India", "Professional_MBA_outside_India", "Professional__Masters_in_India", "Professional__Masters_outside_India", "Research__Masters_Ph_D_in_India", "Research__Masters_Ph_D_outside_India", "Resume_Interview_Prep", "Startups_Entrepreneurship", "Technical_skills_training__eg__industry_best_practices__coding_skills_etc__", "other"];
+const NarrowAreas = ["Aerospace Structures/Aerodynamics", "Algebra", "Analog and Mixed Signal", "Applied Statistics", "Artificial Intelligence, Machine Learning, Data Science", "Autonomous Driving", "Behavioral Economics", "Biochemistry", "Bioengineering", "Bioethics", "Bioinspired Materials and Systems", "Biomaterials and biophysics", "Biomedical Imaging, Sensing and Genomic Signal Processing", "Biophysics", "Building Science/Technology", "Business Analytics", "Calculus and analysis", "Catalysis", "Clean energy", "Climate change and sustainability", "Cloud Computing, Big data, Distributed systems", "Coastal/Ocean Engineering", "Combinatorics", "Communication", "Computational mechanics", "Computational physics and numerical methods", "Computer Architecture, Operating Systems", "Computer networks, security", "Construction management", "Construction Methods/Materials", "Construction Science/Technology", "Critical History", "Cryptography", "Data Science & Analytics", "Data Science/Analytics", "Design Theory", "Device Science and Nanotechnology", "Digital Signal Processing", "Digital VLSI", "Dynamical systems and differential equations", "Earthquake engineering", "Electrochemistry", "Electromagnetics and Microwaves", "Electronic, Magnetic and Photonic Materials", "Electronics & Photonics", "Embedded Systems", "Energy and Power, Power Electronics", "Energy Management", "Energy Production and Storage", "Enviromental engineering", "Environmental Science", "Enzymology", "Fluid Mechanics", "Fluid mechanics and machinery", "Game theory", "Genetically modified food", "geographic information systems (GIS)", "Geology", "Geometry and topology", "Geophysics", "Geotechnical engineering", "Gerontology", "Green Technologies", "Historic Conservation/Preservation", "Hydraulics", "Industrial Design", "Industrial Engineering", "Information Science and Systems", "Information theory and signal processing", "Interdisciplinary physics and engineering", "Liquids and soft matter", "Logic", "Machine design", "Machine Learning for Biophysics", "Machine Learning for Polymer Science", "Machine Learning for Process Control", "Manufacturing/Production Engineering", "Marine engineering and merchant shipping", "Materials for energy", "Materials Science", "Materials/Pavements", "Mathematical physics", "Mechatronics and robotics", "Membranes and Separations", "Microscopy and advanced imaging", "Molecular Simulations", "Nanobiotechnology", "Nanoscale science and technology", "Nanotechnology", "Number theory", "Numerical Methods", "Operations Engineering & Management", "Operations research", "Operations Research & Optimization", "Optimization", "Organization Development & Change Management", "Petroleum/ Oil & Gas/ Petrochemical/ Mining engineering", "Pharmacology", "Photonics, optoelectronics and device physics", "Polymer Science", "Power Generation and Transmission", "Probability and statistics", "Process Control", "Product Design", "Quality & Reliability Engineering", "Quantum computation and information", "Quantum Mechanics", "Reaction Engineering", "Safety Engineering", "Signals and Systems", "Soil mechanics and Foundation Engineering", "Startups", "Statistical Mechanics", "Stem cell therapy", "Structural Dynamics", "Structural Engineering", "Supply Chain Management", "Surface Science", "Systems Engineering", "Systems Simulation", "Theory of computation", "Therrmal Engineering", "Tissue engineering", "Transportation and Mobility", "Transportation Engineering", "Tunnel Engineering", "Ultrafast physics", "Urban Planning", "Urban Planning/Design", "Water Resources Engineering", "Finance", "Marketing", "Strategy", "Operations", "Management Consulting", "Product Management", "Project Management", "Startups/Small Business", "Non-profits"];
+const _NarrowAreas = ["Aerospace_Structures_Aerodynamics", "Algebra", "Analog_and_Mixed_Signal", "Applied_Statistics", "Artificial_Intelligence__Machine_Learning__Data_Science", "Autonomous_Driving", "Behavioral_Economics", "Biochemistry", "Bioengineering", "Bioethics", "Bioinspired_Materials_and_Systems", "Biomaterials_and_biophysics", "Biomedical_Imaging__Sensing_and_Genomic_Signal_Processing", "Biophysics", "Building_Science_Technology", "Business_Analytics", "Calculus_and_analysis", "Catalysis", "Clean_energy", "Climate_change_and_sustainability", "Cloud_Computing__Big_data__Distributed_systems", "Coastal_Ocean_Engineering", "Combinatorics", "Communication", "Computational_mechanics", "Computational_physics_and_numerical_methods", "Computer_Architecture__Operating_Systems", "Computer_networks__security", "Construction_management", "Construction_Methods_Materials", "Construction_Science_Technology", "Critical_History", "Cryptography", "Data_Science___Analytics", "Data_Science_Analytics", "Design_Theory", "Device_Science_and_Nanotechnology", "Digital_Signal_Processing", "Digital_VLSI", "Dynamical_systems_and_differential_equations", "Earthquake_engineering", "Electrochemistry", "Electromagnetics_and_Microwaves", "Electronic__Magnetic_and_Photonic_Materials", "Electronics___Photonics", "Embedded_Systems", "Energy_and_Power__Power_Electronics", "Energy_Management", "Energy_Production_and_Storage", "Enviromental_engineering", "Environmental_Science", "Enzymology", "Fluid_Mechanics", "Fluid_mechanics_and_machinery", "Game_theory", "Genetically_modified_food", "geographic_information_systems__GIS_", "Geology", "Geometry_and_topology", "Geophysics", "Geotechnical_engineering", "Gerontology", "Green_Technologies", "Historic_Conservation_Preservation", "Hydraulics", "Industrial_Design", "Industrial_Engineering", "Information_Science_and_Systems", "Information_theory_and_signal_processing", "Interdisciplinary_physics_and_engineering", "Liquids_and_soft_matter", "Logic", "Machine_design", "Machine_Learning_for_Biophysics", "Machine_Learning_for_Polymer_Science", "Machine_Learning_for_Process_Control", "Manufacturing_Production_Engineering", "Marine_engineering_and_merchant_shipping", "Materials_for_energy", "Materials_Science", "Materials_Pavements", "Mathematical_physics", "Mechatronics_and_robotics", "Membranes_and_Separations", "Microscopy_and_advanced_imaging", "Molecular_Simulations", "Nanobiotechnology", "Nanoscale_science_and_technology", "Nanotechnology", "Number_theory", "Numerical_Methods", "Operations_Engineering___Management", "Operations_research", "Operations_Research___Optimization", "Optimization", "Organization_Development___Change_Management", "Petroleum__Oil___Gas__Petrochemical__Mining_engineering", "Pharmacology", "Photonics__optoelectronics_and_device_physics", "Polymer_Science", "Power_Generation_and_Transmission", "Probability_and_statistics", "Process_Control", "Product_Design", "Quality___Reliability_Engineering", "Quantum_computation_and_information", "Quantum_Mechanics", "Reaction_Engineering", "Safety_Engineering", "Signals_and_Systems", "Soil_mechanics_and_Foundation_Engineering", "Startups", "Statistical_Mechanics", "Stem_cell_therapy", "Structural_Dynamics", "Structural_Engineering", "Supply_Chain_Management", "Surface_Science", "Systems_Engineering", "Systems_Simulation", "Theory_of_computation", "Therrmal_Engineering", "Tissue_engineering", "Transportation_and_Mobility", "Transportation_Engineering", "Tunnel_Engineering", "Ultrafast_physics", "Urban_Planning", "Urban_Planning_Design", "Water_Resources_Engineering", "Finance", "Marketing", "Strategy", "Operations", "Management_Consulting", "Product_Management", "Project_Management", "Startups_Small_Business", "Non_profits"];
+const _Brach_rel = ['Civil Engg', 'Mathematics', 'CSE EEE ECE', 'Civil Engg', 'CSE EEE ECE', 'CSE EEE ECE', 'Mech Engg, Prod Engg', 'Chemical Engg', 'Chemical Engg', 'Biotechnology', 'Material Science', 'Engg Phy', 'CSE EEE ECE', 'Chemical Engg', 'Architecture', 'Mech Engg, Prod Engg', 'Mathematics', 'Chemical Engg', 'Mech Engg, Prod Engg', 'Miscellaneous topics', 'CSE EEE ECE', 'Civil Engg', 'Mathematics', 'CSE EEE ECE', 'Civil Engg', 'Engg Phy', 'CSE EEE ECE', 'CSE EEE ECE', 'Civil Engg', 'Architecture', 'Architecture', 'Architecture', 'CSE EEE ECE', 'Mech Engg, Prod Engg', 'Civil Engg', 'Architecture', 'CSE EEE ECE', 'CSE EEE ECE', 'CSE EEE ECE', 'Mathematics', 'Civil Engg', 'Chemical Engg', 'CSE EEE ECE', 'Chemical Engg', 'Material Science', 'CSE EEE ECE', 'CSE EEE ECE', 'Mech Engg, Prod Engg', 'Material Science', 'Civil Engg', 'Chemical Engg', 'Biotechnology', 'Chemical Engg', 'Mech Engg, Prod Engg', 'Mathematics', 'Biotechnology', 'Civil Engg', 'Civil Engg', 'Mathematics', 'Engg Phy', 'Civil Engg', 'Biotechnology', 'Material Science', 'Architecture', 'Civil Engg', 'Architecture', 'Mech Engg, Prod Engg', 'CSE EEE ECE', 'Mathematics', 'Engg Phy', 'Engg Phy', 'Mathematics', 'Mech Engg, Prod Engg', 'Chemical Engg', 'Chemical Engg', 'Chemical Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Engg Phy', 'Chemical Engg', 'Civil Engg', 'Mathematics', 'Mech Engg, Prod Engg', 'Chemical Engg', 'Engg Phy', 'Chemical Engg', 'Biotechnology', 'Engg Phy', 'CSE EEE ECE', 'Mathematics', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Mech Engg, Prod Engg', 'Biotechnology', 'Engg Phy', 'Chemical Engg', 'CSE EEE ECE', 'Mathematics', 'Chemical Engg', 'Architecture', 'Mech Engg, Prod Engg', 'Engg Phy', 'Chemical Engg', 'Chemical Engg', 'Civil Engg', 'CSE EEE ECE', 'Civil Engg', 'Miscellaneous topics', 'Chemical Engg', 'Biotechnology', 'Civil Engg', 'Civil Engg', 'Mech Engg, Prod Engg', 'Chemical Engg', 'Civil Engg', 'Mech Engg, Prod Engg', 'Mathematics', 'Mech Engg, Prod Engg', 'Biotechnology', 'Mech Engg, Prod Engg', 'Civil Engg', 'Civil Engg', 'Engg Phy', 'Architecture', 'Architecture', 'Civil Engg', 'Management', 'Management', 'Management', 'Management', 'Management', 'Management', 'Management', 'Management', 'Management'];
 for (var i = 0; i < _Brach_rel.length; i++) {
     for (var j = i; j < _Brach_rel.length; j++) {
         if (_Brach_rel[j] < _Brach_rel[i]) {
@@ -65,12 +61,14 @@ function Begin(bo) {
     setmentor(bo);
     App.sethtml(`
     <div class="dfc">
-        <div class="introbox">2021-22
-            <h2>Alumni/Mentor Sign-up NITCAA <br> Mentoring Program (NITCAMP) </h2>
-            <br>- All NITC/RECC alumni are welcome to fill this form.
+        <div class="introbox">
+            <h2>Alumni/Mentor Sign-up for NITC Alumni <br> Mentoring Program (NITCAMP) 2021-22</h2>
+            <br>- All NITC/RECC alumni are welcome to fill this form. 
             <br>- This form will take no more than 2 minutes to complete. 
             <br>- We thank you for your time!
-            <br>- If you have questions or would like to know more about NITCAMP, send an email to <a href="mailto:nitcaa.mentoring@gmail.com">nitcaa.mentoring@gmail.com</a>.
+            <br>- We don't sell your personal data to advertisers and we use the information which was shared by you only for the purpose of this mentoring program.
+            <br>- This program provides equal opportunity for all those who register and does not discriminate based on gender, religion, caste, language or nationality.
+            <br>- If you have questions or would like to know more about NITCAMP, send an email to <a href="mailto:nitcaa.mentoring@gmail.com">nitcaa.mentoring@gmail.com</a> .
             <div class="dfc">
                 <button onclick="StartB()">Back</button>
                 <button onclick="NamePage()">Continue</button>
@@ -82,7 +80,7 @@ function Begin(bo) {
         App.sethtml(`
         <div class="dfc" style="justify-content:center;">
             <div class="introbox" style="max-width:90%;">
-                <h2>Mentee Sign-up NITCAA <br> Mentoring Program (NITCAMP) 2021-22</h2>
+                <h2>Mentee Sign-up NITCAA <br> Mentoring Program (NITCAMP) 2021-21</h2>
                 <br>Dear Students of NIT Calicut! <br> Are you interested in being mentored by the members of NITC Alumni Association to build your professional career?  NITC Alumni Mentoring Program (NITCAMP) provides you an amazing opportunity for that!
                 <br>The mentors will try to help you gain insight in some of the relevant areas of your career development such as 
 <br>(i) Preparation for higher studies
@@ -105,6 +103,30 @@ function Begin(bo) {
 }
 
 var name = "";
+var phno = "";
+
+function validateName() {
+    var _pattern = /^[A-Za-z]+([A-Z a-z]+)*$/;
+    var _name = document.getElementById('name').value;
+    if (!_pattern.test(_name)) {
+        alert('Please enter your full name (first & last name).');
+        document.getElementById('name').focus();
+        return false;
+    } else {
+        SetName();
+        return true;
+    }
+}
+
+function EnableDisable(inputString) {
+    var btnSubmit = document.getElementById("Next");
+
+    if (inputString.value.trim() != "") {
+        btnSubmit.disabled = false;
+    } else {
+        btnSubmit.disabled = true;
+    }
+}
 
 function NamePage() {
     App.sethtml(`
@@ -113,23 +135,24 @@ function NamePage() {
             Tell Us Who you are?
             <br>
             <br>
-            <input id="name" placeholder="Your Name" value='${name}'>
+            <input id="name" placeholder="Your Name" value='${name}' onkeyup="EnableDisable(this)">
             <br>
             <br>
             <div class="dfc">
-                <button onclick="Begin(false)">Back</button>
-                <button onclick="SetName()">Next</button>
+                <button onclick="Begin(true)">Back</button>
+                <button id=Next onclick="validateName()" disabled="disabled">Next</button>
             </div>
         </div>
     </div>`);
+    EnableDisable({ value: name });
 }
 
 var mail = "";
-var phno = "";
 var gra_yr = "";
 var roll_no = "";
 var max_hold = "";
 var phoneInput;
+
 
 function SetName(bo = false) {
     if (!bo) {
@@ -143,16 +166,17 @@ function SetName(bo = false) {
     App.sethtml(`
         <div class="dfc">
             <div class="introbox">
-                Hey <sp>${name}</sp> <br>  Enter email id and phone number ${ismentor?`graduation year at NITC/REC and how many mentees you can hold.`:`year of study(eg - 3rd yr) and NITC Roll number`}   .
+                Hey <sp>${name}</sp> <br>  
+                Enter email id, phone number (with country code), year of study at NITC/REC, and nitc roll number.
                 <br>
                 <br>
                 <input id="email" placeholder="Email id" value='${mail}'>
                 <br>
                 <br>
-                <input id="phno" type="tel" placeholder="Phone Number" value=''>
+                <input id="phno" type="tel" placeholder="Phone Number">
                 <br>
                 <br>
-                <input id="grad" placeholder="year" value='${gra_yr}'>
+                <input id="grad" placeholder="year of study(1-4)" value='${gra_yr}'>
                 <br>
                 <br>
                 ${ismentor?`
@@ -167,15 +191,19 @@ function SetName(bo = false) {
                     <button onclick="NamePage()">Back</button>
                     <button onclick="SetMandP()">Next</button>
                 </div>
-                <div class="alert alert-info" style="display: none;"></div>
+
             </div>
         </div>`);
-        
+
         var phoneInputField = document.getElementById("phno");
         phoneInput = window.intlTelInput(phoneInputField, {
             initialCountry:"in",
             utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
         });
+        if(phno.length>10){
+            phoneInput.setNumber(phno);
+            phoneInputField.value=extractph(phno)[1];
+        }
 }
 
 function _Search(val){
@@ -207,7 +235,12 @@ function view_ments(){
     document.getElementById("abs_selmen").style.zIndex=1;
     document.getElementById("abs_selmen").style.opacity=1;
 }
-
+function extractph(_phno){
+    if(_phno.length<10){
+        return ["",""];
+    }
+    return [_phno.slice(0,_phno.length-10) , _phno.slice(_phno.length-10,_phno.length)]
+}
 var DEPT = "nil";
 var MENTORS=[];
 function SetMandP(bo = false) {
@@ -225,7 +258,7 @@ function SetMandP(bo = false) {
             console.log("Enter your Mail.");
             return;
         }
-        if (!_phno || _phno == undefined || _phno == null || _phno.length < 1 || _phno.match(/^[0-9]+([0-9]+)*$/)==null) {
+        if (!_phno || _phno == undefined || _phno == null || _phno.length != 10 || _phno.match(/^[0-9]+([0-9]+)*$/)==null) {
             console.log("Enter your Phone Number.");
             return;
         }
@@ -233,7 +266,7 @@ function SetMandP(bo = false) {
             console.log("Enter Graduation Year.");
             return;
         }
-        if(ismentor && (!_max_hold || _max_hold==undefined || _max_hold==null || _max_hold.match(/^[0-9]+([0-9]+)*$/)==null)){
+        if(ismentor && (!_max_hold || _max_hold==undefined || _max_hold==null || _max_hold.match(/^[0-9]+([0-9]+)*$/)==null || _max_hold==0)){
             console.log("Maximum Hold");
             return;
         }
@@ -329,7 +362,7 @@ function SetMandP(bo = false) {
 
 var selarray=[];
 var sp_btns=[];
-
+var other_broad="other";
 function ChanageSel(index,btn){
     var _selarray=[];
     var _sp_btns=[];
@@ -392,9 +425,20 @@ var broad_json = init_json(_broadAreas);
 var narrow_json = init_json(_NarrowAreas);
 
 function change_broad_json(val, index) {
+    if(index=="other"){
+        if(val.checked){
+            document.getElementById("chdiv_other_broad").innerHTML=`<input type='text' value='other' id="cdob_val" onchange="setotherb(this)">`;
+        }
+        else{
+            document.getElementById("chdiv_other_broad").innerHTML="Other";
+            other_broad="other";
+        }
+    }
     broad_json[index] = val.checked;
 }
-
+function setotherb(ele){
+    other_broad=ele.value;
+}
 function change_narrow_json(val, index) {
     narrow_json[index] = val.checked;
 }
@@ -413,15 +457,21 @@ function broadArea(bo = false) {
     var _opts = '';
     for (var i in broadAreas) {
         var _checked = broad_json[_broadAreas[i]];
-        _opts += `
-        <div class="dfc dd" style="padding-top:10px">
-            <input type="checkbox" onchange="change_broad_json(this,'${_broadAreas[i]}')" ${_checked?'checked':""}> ${broadAreas[i]}
-        </div>`;
+        if(broadAreas[i]=="other")
+            _opts += `
+            <div class="dfc dd" style="padding-top:10px">
+                <input type="checkbox" onchange="change_broad_json(this,'${_broadAreas[i]}')" ${_checked?'checked':""}> <div id="chdiv_other_broad" style="overflow:hidden">${_checked?`<input type='text' value='${other_broad}' id="cdob_val" onchange="setotherb(this)">`:"Other"}</div>
+            </div>`;
+        else
+            _opts += `
+            <div class="dfc dd" style="padding-top:10px">
+                <input type="checkbox" onchange="change_broad_json(this,'${_broadAreas[i]}')" ${_checked?'checked':""}> ${broadAreas[i]}
+            </div>`;
     }
     App.sethtml(`
         <div class="dfc">
             <div class="introbox">
-                Choose your broad areas of expertise
+            Choose your broad areas of expertise (Please select your options very carefully, as these will be used to assign you mentees with similar interests). You may select multiple options.
                 <br>
                 <br>
                 ${_opts}
@@ -447,7 +497,12 @@ function NarrowArea(bo = false) {
         var _val = "";
         for (var i in broad_json) {
             if (broad_json[i]) {
-                _val += broadAreas[j] + " , ";
+                if(broadAreas[j]=="other"){
+                    if(other_broad!="other")
+                        _val += other_broad;
+                }
+                else
+                    _val += broadAreas[j] + " , ";
             }
             j++;
         }
@@ -527,7 +582,6 @@ function deselect(i) {
 
 function Search(val) {
     var val = val.value.toLowerCase();
-    console.log(val);
     var ar = [];
     for (var i in NarrowAreas) {
         var narrowarea = NarrowAreas[i].toLowerCase();
@@ -539,7 +593,7 @@ function Search(val) {
     console.log(ar);
     for (var i = 0; i < ar.length; i++) {
         var index = Number(ar[i]);
-        var _checked=narrow_json[index];
+        var _checked=narrow_json[_NarrowAreas[index]];
         temphtml +=
         `<div class="dfc dd c">
             <div style="display:flex;width:100%;"><input type="checkbox" onchange="change_narrow_json(this,'${_NarrowAreas[index]}')" ${_checked?'checked':""}> <div style="flex-grow=1">${NarrowAreas[index]}</div></div>
@@ -578,8 +632,8 @@ function OthArea(bo = false) {
                 <div class="dfc">
                     <button onclick="NarrowArea(true)">Back</button>
                     ${ismentor?
-                        `<button onclick="LinkdinData()">Next</button>`
-                        :`<button onclick="Othdatafin()">Next</button>`}
+                        `<button onclick="LinkdinData()">Next/Skip</button>`
+                        :`<button onclick="Othdatafin()">Next/Skip</button>`}
                 </div>
             </div>
         </div>
@@ -601,22 +655,24 @@ function LinkdinData(bo = false) {
                 Please add the link to any of the above. Please note that providing this link will make it easy for students to look you up and find whether they would like to receive mentoring from you.
                 <br>
                 <br>
-                <input id="oth_links" type="text" placeholder="your answer" value='${oth_links}'>
+                <input id="oth_links" type="text" placeholder="your answer" value='${oth_links=="not given"?"":oth_links}'>
                 <br>
                 <br>
                 <div class="dfc">
                     <button onclick="OthArea(true)">Back</button>
-                    <button onclick="Other_ans()">Next</button>
+                    <button onclick="Other_ans()">Next/Skip</button>
                 </div>
             </div>
         </div>
     `);
 }
 
-function Other_ans() {
-    oth_links = document.getElementById("oth_links").value;
-    if (oth_links.length < 1) {
-        return;
+function Other_ans(def=false) {
+    if(!def){
+        oth_links = document.getElementById("oth_links").value;
+        if (oth_links.length < 1) {
+            oth_links="not given";
+        }
     }
     App.sethtml(`
         <div class="dfc">
@@ -624,18 +680,58 @@ function Other_ans() {
             Any additional details about you that you want to share with mentees? (e.g., Where do you work? Is there any specific topic that you would like to help the mentee with?)
                 <br>
                 <br>
-                <input id="oth_details" type="text" placeholder="your answer">
+                <input id="oth_details" type="text" placeholder="your answer" value='${oth_details=="not given"?"":oth_details}'>
                 <br>
                 <br>
                 <div class="dfc">
                     <button onclick="LinkdinData(true)">Back</button>
-                    <button onclick="Submit()">Next</button>
+                    <button onclick="r_page()">Review</button>
                 </div>
             </div>
         </div>
     `);
 }
-
+var oth_details="";
+function r_page(){
+    oth_details=document.getElementById("oth_details").value;
+    if(oth_details.length<1)
+        oth_details="not given";
+    App.sethtml(`
+        <div class="dfc">
+            <div class="introbox">
+                <h2>Review</h2>
+                <div class="grid-container">
+                    <div class="grid-item r">Name</div>
+                    <div class="grid-item">${name}</div>
+                    <div class="grid-item r">Email id</div>
+                    <div class="grid-item">${mail}</div>
+                    <div class="grid-item r">Phone Number</div>
+                    <div class="grid-item">${phno}</div>
+                    <div class="grid-item r">Graduation Year</div>
+                    <div class="grid-item">${gra_yr}</div>
+                    <div class="grid-item r">Number of students you can Mentor</div>
+                    <div class="grid-item">${max_hold}</div>
+                    <div class="grid-item r">Department</div>
+                    <div class="grid-item">${DEPT}</div>
+                    <div class="grid-item r">Broad areas of expertise</div>
+                    <div class="grid-item">${broad_data}</div>
+                    <div class="grid-item r">Narrow areas of expertise</div>
+                    <div class="grid-item">${narrow_data}</div>
+                    <div class="grid-item r">Linkedin or Portfolio</div>
+                    <div class="grid-item">${oth_links}</div>
+                    <div class="grid-item r">Other additional details</div>
+                    <div class="grid-item">${oth_details}</div>
+                </div>
+                <br>
+                <br>
+                <div class="dfc">
+                    <button onclick="Other_ans(true)">Back</button>
+                    <button onclick="Submit()">Submit</button>
+                </div>
+            </div>
+        </div>
+    `);
+}
 function Othdatafin(){
     App.sethtml(`
         <div class="dfc">
@@ -707,7 +803,6 @@ function _Submit() {
 }
 
 function Submit() {
-    var oth_details = document.getElementById("oth_details").value;
     var json = {};
     var x_json={};
     json["name"] = name;
@@ -735,7 +830,7 @@ function Submit() {
             Thank you ,
             <sp>${name.split(" ")[0]}</sp> for your response.
             <br>
-            <br> Data entered successfully , if any corrections you can enter data from the beginning . please reload the page.
+            <br> Data entered successfully. if there are any corrections, you can enter data from the beginning after reloading the page. 
             Last entered details will be considered.
         </div>
     </div>`);
@@ -771,13 +866,34 @@ function view(index){
             <div class="det"><b>OtherAreas of Expertise</b></div>
             <div class="det">${_mentor.other_area}</div>
             <br>`}
-            <div class="det">Email : ${_mentor.email}</div>
-            <div class="det">LinkedIN : ${_mentor.linkdin_info}</div>
+            <div class="det">Email : <a href="mailto:${_mentor.email}">${_mentor.email}</a></div>
+            ${_mentor.linkdin_info=="not given"?"":
+                `${getlink(_mentor.linkdin_info)=="nil"?
+                `<div class="det">LinkedIN ( or check out )${_mentor.linkdin_info}</div>`:
+                `<div class="det">LinkedIN : <a href=${getlink(_mentor.linkdin_info)}>${_mentor.linkdin_info}</a></div>`}
+                `
+            }
             <div class="det">Phone no : ${_mentor.phno}</div>
             <br>
                 <button onclick="closeview()">OK</button>
             <br>
         </div>`;
+}
+function getlink(_link){
+    if(_link.slice(0,8).toLowerCase()=="https://" || _link.slice(0,7).toLowerCase()=="http://")
+        return _link;
+    if(_link.slice(0,3).toLowerCase()=="www")
+        return "https://"+_link;
+    if(_link.split(" ").length==1)
+        return "https://www."+_link;
+    for(i in _link.split(" ")){
+        __link=_link.split(" ")[i];
+        if(__link.slice(0,8)=="https://" || __link.slice(0,7)=="http://")
+            return _link;
+        if(__link.slice(0,3).toLowerCase()=="www")
+            return "https://"+__link;
+    }
+    return "nil";
 }
 function closeview(){
     var ele=document.getElementById("view");
