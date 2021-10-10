@@ -80,7 +80,7 @@ function Begin(bo) {
         App.sethtml(`
         <div class="dfc" style="justify-content:center;">
             <div class="introbox" style="max-width:90%;">
-                <h2>Mentee Sign-up NITCAA <br> Mentoring Program (NITCAMP) 2021-21</h2>
+                <h2>Mentee Sign-up NITCAA <br> Mentoring Program (NITCAMP) 2021-22</h2>
 <br>- All current NITC students are welcome to fill this form.
 <br>- This form will take no more than 2 minutes to complete.
 <br>- We thank you for your time!
@@ -159,11 +159,21 @@ function SetName(bo = false) {
         }
         name = _name;
     }
+
+    var departments_opts = `<option value="select">--select department--</option>`;
+    for (var dept in departments) {
+        var sel = false;
+        dept = departments[dept];
+        if (dept == DEPT)
+            sel = true;
+        departments_opts += `<option value='${dept}' ${sel?'selected':''}>${dept}</option>`
+    }
+
     App.sethtml(`
         <div class="dfc">
             <div class="introbox">
                 Hey <sp>${name}</sp> <br>  
-                Enter email id, phone number (with country code),programme year of study at NITC/REC, and nitc roll number.
+                Enter email id, phone number (with country code),programme year of study at NITC/REC,nitc roll number and department.
                 <br>
                 <br>
                 <input id="email" placeholder="Email id" value='${mail}'>
@@ -192,6 +202,15 @@ function SetName(bo = false) {
                 <br>
                 <br>`:`
                 <input id="roll" placeholder="roll number" value='${roll_no}'>
+                <br>
+                <br>
+                <select id="depart" onchange='setoth()'>
+                    ${departments_opts}
+                </select>
+                <br>
+                <br>
+                <div id="oth">
+                </div>
                 <br>
                 <br>
                 `}
@@ -262,7 +281,15 @@ function extractph(_phno){
 var DEPT = "nil";
 var MENTORS=[];
 function SetMandP(bo = false) {
-    
+    if(!bo){
+        var _tempbo=true;
+        for(j in narrow_json){
+            if(narrow_json[j])
+                _tempbo=false;
+        }
+        if(_tempbo)
+            return;
+    }
     if(!ismentor){    
         var values=selarray;
         var _html="";
@@ -391,6 +418,7 @@ function setoth() {
         _html = `<input id="others" placeholder="Others" onchange="set_cus_dep()">`;
     }
     document.getElementById("oth").innerHTML = _html;
+    DEPT=val;
 }
 
 function set_cus_dep() {
@@ -432,6 +460,7 @@ function broadArea(bo = false) {
         var _phno = document.getElementById("phno").value;
         var _gra_yr = document.getElementById("grad").value;
         var t_prgm=document.getElementById("_prgm").value;
+        
         var _max_hold=null;
         var _roll_no=null;
         if(!ismentor)
@@ -494,7 +523,7 @@ function broadArea(bo = false) {
                 <br>
                 <br>
                 <div class="dfc">
-                    <button onclick="Begin(true)">Back</button>
+                    <button onclick="SetName(true)">Back</button>
                     <button onclick="NarrowArea()">Next</button>
                 </div>
             </div>
@@ -521,6 +550,8 @@ function NarrowArea(bo = false) {
             j++;
         }
         broad_data = _val;
+        if(broad_data=="")
+            return;
     }
     var _opts = '';
     var p_adds = "";
