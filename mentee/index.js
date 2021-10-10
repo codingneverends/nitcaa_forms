@@ -81,17 +81,13 @@ function Begin(bo) {
         <div class="dfc" style="justify-content:center;">
             <div class="introbox" style="max-width:90%;">
                 <h2>Mentee Sign-up NITCAA <br> Mentoring Program (NITCAMP) 2021-21</h2>
-                <br>Dear Students of NIT Calicut! <br> Are you interested in being mentored by the members of NITC Alumni Association to build your professional career?  NITC Alumni Mentoring Program (NITCAMP) provides you an amazing opportunity for that!
-                <br>The mentors will try to help you gain insight in some of the relevant areas of your career development such as 
-<br>(i) Preparation for higher studies
-<br>(ii) Guidance for undergraduate projects/ internships 
-<br>(iii) Expert advice in the fields of your interest. 
-<br><br>Please try to provide an answer to as many questions as possible.
-<br><br>This program is open to all students of NITC irrespective of their year of study.
-<br><br>Please note that filling this form does not assure a mentor. We have a limited number of mentors and we will try to match you with a mentor according to your preferences. Thank you for your interest!
-<br><br>Whether you are matched with a mentor or not, we will be creating social media groups where you can interact with mentors and other mentees.
-<br><br>This program provides equal opportunity for all applicants and does not discriminate based on gender, religion, caste, language or nationality.
+<br>- All current NITC students are welcome to fill this form.
+<br>- This form will take no more than 2 minutes to complete.
+<br>- We thank you for your time!
+<br>- We don't sell your personal data to advertisers and we use the information which was shared by you only for the purpose of this mentoring program.
+<br>- This program provides equal opportunity for all those who register and does not discriminate based on gender, religion, caste, language or nationality.
 <br>- If you have questions or would like to know more about NITCAMP, send an email to <a href="mailto:nitcaa.mentoring@gmail.com">nitcaa.mentoring@gmail.com</a>.
+<br>- Please note that filling this form does not assure a mentor. We have a limited number of mentors and we will try to match you with a mentor according to your preferences. Thank you for your interest!
                 <div class="dfc">
                     <button onclick="StartB()">Back</button>
                     <button onclick="NamePage()">Continue</button>
@@ -139,7 +135,7 @@ function NamePage() {
             <br>
             <br>
             <div class="dfc">
-                <button onclick="Begin(true)">Back</button>
+                <button onclick="SetName()">Back</button>
                 <button id=Next onclick="validateName()" disabled="disabled">Next</button>
             </div>
         </div>
@@ -201,7 +197,7 @@ function SetName(bo = false) {
                 `}
                 <div class="dfc">
                     <button onclick="NamePage()">Back</button>
-                    <button onclick="SetMandP()">Next</button>
+                    <button onclick="broadArea()">Next</button>
                 </div>
 
             </div>
@@ -266,42 +262,7 @@ function extractph(_phno){
 var DEPT = "nil";
 var MENTORS=[];
 function SetMandP(bo = false) {
-    if (!bo) {
-        var _mail = document.getElementById("email").value;
-        var _phno = document.getElementById("phno").value;
-        var _gra_yr = document.getElementById("grad").value;
-        var _max_hold=null;
-        var _roll_no=null;
-        if(!ismentor)
-            _roll_no=document.getElementById("roll").value;
-        else
-            _max_hold=document.getElementById("max_hold").value;
-        if (!_mail || _mail == undefined || _mail == null || _mail.length < 1) {
-            console.log("Enter your Mail.");
-            return;
-        }
-        if (!_phno || _phno == undefined || _phno == null || _phno.length != 10 || _phno.match(/^[0-9]+([0-9]+)*$/)==null) {
-            console.log("Enter your Phone Number.");
-            return;
-        }
-        if (!_gra_yr || _gra_yr == undefined || _gra_yr == null || _gra_yr == "0000") {
-            console.log("Enter Graduation Year.");
-            return;
-        }
-        if(ismentor && (!_max_hold || _max_hold==undefined || _max_hold==null || _max_hold.match(/^[0-9]+([0-9]+)*$/)==null || _max_hold==0)){
-            console.log("Maximum Hold");
-            return;
-        }
-        if (!ismentor && (!_roll_no || _roll_no == undefined || _roll_no == null)) {
-            console.log("Roll Number.");
-            return;
-        }
-        mail = _mail;
-        phno = "+"+phoneInput.getSelectedCountryData().dialCode+_phno;
-        gra_yr = _gra_yr;
-        roll_no=_roll_no;
-        max_hold=_max_hold;
-    }
+    
     if(!ismentor){    
         var values=selarray;
         var _html="";
@@ -340,8 +301,8 @@ function SetMandP(bo = false) {
                 <br>
                 <br>
                 <div class="dfc">
-                    <button onclick="SetName(true)">Back</button>
-                    <button onclick="broadArea()">Next</button>
+                    <button onclick="NarrowArea(true)">Back</button>
+                    <button onclick="OthArea()">Next</button>
                 </div>
                 </div>
             </div>
@@ -466,15 +427,46 @@ function change_narrow_json(val, index) {
 }
 
 function broadArea(bo = false) {
-    if (!bo && ismentor) {
-        var _dept = document.getElementById("depart").value;
-        if (_dept.toLowerCase() == "select") {
-            console.log("Please select one");
+    if (!bo) {
+        var _mail = document.getElementById("email").value;
+        var _phno = document.getElementById("phno").value;
+        var _gra_yr = document.getElementById("grad").value;
+        var t_prgm=document.getElementById("_prgm").value;
+        var _max_hold=null;
+        var _roll_no=null;
+        if(!ismentor)
+            _roll_no=document.getElementById("roll").value;
+        else
+            _max_hold=document.getElementById("max_hold").value;
+        if (!_mail || _mail == undefined || _mail == null || _mail.length < 1 || _mail.match("@")==null || _mail.match(".")==null) {
+            console.log("Enter your Mail.");
             return;
         }
-        if (_dept.toLowerCase() != "others") {
-            DEPT = _dept;
+        if (!_phno || _phno == undefined || _phno == null || _phno.length != 10 || _phno.match(/^[0-9]+([0-9]+)*$/)==null) {
+            console.log("Enter your Phone Number.");
+            return;
         }
+        if (!_gra_yr || _gra_yr == undefined || _gra_yr == null || _gra_yr == "0000") {
+            console.log("Enter Graduation Year.");
+            return;
+        }
+        if(ismentor && (!_max_hold || _max_hold==undefined || _max_hold==null || _max_hold.match(/^[0-9]+([0-9]+)*$/)==null || _max_hold==0)){
+            console.log("Maximum Hold");
+            return;
+        }
+        if (!ismentor && (!_roll_no || _roll_no == undefined || _roll_no == null)) {
+            console.log("Roll Number.");
+            return;
+        }
+        if(t_prgm=="others" && (__prgm=="" || __prgm=="B Tech")){
+            console.log("Enter Program");
+            return;
+        }
+        mail = _mail;
+        phno = "+"+phoneInput.getSelectedCountryData().dialCode+_phno;
+        gra_yr = _gra_yr;
+        roll_no=_roll_no;
+        max_hold=_max_hold;
     }
     var _opts = '';
     for (var i in broadAreas) {
@@ -502,7 +494,7 @@ function broadArea(bo = false) {
                 <br>
                 <br>
                 <div class="dfc">
-                    <button onclick="SetMandP(true)">Back</button>
+                    <button onclick="Begin(true)">Back</button>
                     <button onclick="NarrowArea()">Next</button>
                 </div>
             </div>
@@ -568,7 +560,7 @@ function NarrowArea(bo = false) {
                 <br>
                 <div class="dfc">
                     <button onclick="broadArea(true)">Back</button>
-                    <button onclick="OthArea()">Next</button>
+                    <button onclick="SetMandP()">Next</button>
                 </div>
             </div>
         </div>
@@ -642,10 +634,8 @@ function OthArea(bo = false) {
     App.sethtml(`
         <div class="dfc">
             <div class="introbox">
-                Other areas of expertise
                 <br>
-                <br>
-                If you have any additional areas of expertise, please type them below, separated by a comma.
+                Please explain what are your expectations from the mentoring program. We will only use the broad and narrow areas of interest to find appropriate mentors for you. However, we may look at your answer to this question, if we need any clarification. Thus, include as much details as possible.
                 <br>
                 <br>
                 <input id="oth_area_data" type="text" placeholder="your answer" value='${Oth_area_data}'>
@@ -655,7 +645,7 @@ function OthArea(bo = false) {
                     <button onclick="NarrowArea(true)">Back</button>
                     ${ismentor?
                         `<button onclick="LinkdinData()">Next/Skip</button>`
-                        :`<button onclick="Othdatafin()">Next/Skip</button>`}
+                        :`<button onclick="r_page()">Next/Skip</button>`}
                 </div>
             </div>
         </div>
@@ -706,7 +696,7 @@ function Other_ans(def=false) {
                 <br>
                 <br>
                 <div class="dfc">
-                    <button onclick="LinkdinData(true)">Back</button>
+                    <button onclick="OthArea(true)">Back</button>
                     <button onclick="r_page()">Review</button>
                 </div>
             </div>
@@ -714,10 +704,21 @@ function Other_ans(def=false) {
     `);
 }
 var oth_details="";
+function getmentor(_i){
+    if(selarray.length<=_i)
+        return "not selected";
+    return MENTORS[selarray[_i]].name || "not selected";
+}
 function r_page(){
-    oth_details=document.getElementById("oth_details").value;
+    var oth_details=document.getElementById("oth_area_data").value;
     if(oth_details.length<1)
         oth_details="not given";
+    Oth_area_data=oth_details;
+    mentors_in_order="1 - "+ getmentor(0) +" , "
+                    +"2 - "+ getmentor(1) +" , "
+                    +"3 - "+ getmentor(2) +" , "
+                    +"4 - "+ getmentor(3) +" , "
+                    +"5 - "+ getmentor(4) +" ";
     App.sethtml(`
         <div class="dfc">
             <div class="introbox">
@@ -729,26 +730,22 @@ function r_page(){
                     <div class="grid-item">${mail}</div>
                     <div class="grid-item r">Phone Number</div>
                     <div class="grid-item">${phno}</div>
-                    <div class="grid-item r">Graduation Year</div>
+                    <div class="grid-item r">Year of study</div>
                     <div class="grid-item">${gra_yr}</div>
-                    <div class="grid-item r">Number of students you can Mentor</div>
-                    <div class="grid-item">${max_hold}</div>
-                    <div class="grid-item r">Department</div>
-                    <div class="grid-item">${DEPT}</div>
                     <div class="grid-item r">Broad areas of expertise</div>
                     <div class="grid-item">${broad_data}</div>
                     <div class="grid-item r">Narrow areas of expertise</div>
                     <div class="grid-item">${narrow_data}</div>
-                    <div class="grid-item r">Linkedin or Portfolio</div>
-                    <div class="grid-item">${oth_links}</div>
-                    <div class="grid-item r">Other additional details</div>
+                    <div class="grid-item r">Mentors Selected</div>
+                    <div class="grid-item">${mentors_in_order}</div>
+                    <div class="grid-item r">Expectations</div>
                     <div class="grid-item">${oth_details}</div>
                 </div>
                 <br>
                 <br>
                 <div class="dfc">
-                    <button onclick="Other_ans(true)">Back</button>
-                    <button onclick="Submit()">Submit</button>
+                    <button onclick="OthArea(true)">Back</button>
+                    <button onclick="_Submit()">Submit</button>
                 </div>
             </div>
         </div>
@@ -778,7 +775,7 @@ function Othdatafin(){
                 <br>
                 <div class="dfc">
                     <button onclick="OthArea(true)">Back</button>
-                    <button onclick="_Submit()">Next</button>
+                    <button onclick="r_page()">Next</button>
                 </div>
             </div>
         </div>
@@ -786,24 +783,15 @@ function Othdatafin(){
 
 }
 function _Submit() {
-    var oth_details = document.getElementById("oth_details").value;
-    var temp_val=document.getElementById("mente_op").value;
-    if(temp_val.length!=0)
-        temp_val+=" , ";
-    if(document.getElementById("oneone").checked)
-        temp_val+="One on One Mentoring ,";
-    if(document.getElementById("grpmen").checked)
-        temp_val+="Group Mentoring on a social media platform ,";
     var json = {};
     json["name"] = name;
     json["email"] = mail;
     json["phno"] = phno;
     json["year_of_study"] = gra_yr;
     json["roll_no"] = roll_no;
-    json["expectations"] = oth_details;
-    json["opinoin"]=temp_val;
     json["broad_areas"]=broad_data;
     json["narrow_areas"]=narrow_data;
+    json["other_suggs"] = Oth_area_data;
     json["programme"]=__prgm;
     _pre_0=MENTORS[selarray[0]]?.name||"not selected";
     _pre_1=MENTORS[selarray[1]]?.name||"not selected";
