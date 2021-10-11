@@ -159,13 +159,20 @@ function SetName(bo = false) {
         }
         name = _name;
     }
-
+    var _inject_oth_dept = "";
     var departments_opts = `<option value="select">--select department--</option>`;
+    var sel_once = false;
     for (var dept in departments) {
         var sel = false;
         dept = departments[dept];
-        if (dept == DEPT)
+        if (dept.toLocaleLowerCase() == DEPT.toLowerCase()) {
             sel = true;
+            sel_once = true;
+        }
+        if (dept.toLowerCase() == "others" && DEPT.toLowerCase() != "nil" && !sel_once) {
+            _inject_oth_dept = `<input id="others" placeholder="Others" onchange="set_cus_dep()" value=${DEPT}>`;
+            sel = true;
+        }
         departments_opts += `<option value='${dept}' ${sel?'selected':''}>${dept}</option>`
     }
 
@@ -194,7 +201,7 @@ function SetName(bo = false) {
                 <div id="oth__prgm"></div>
                 <br>
                 <br>
-                <input id="grad" placeholder="year of study(1-4)" value='${gra_yr}'>
+                <input id="grad" placeholder="year of study(1-6)" value='${gra_yr}'>
                 <br>
                 <br>
                 ${ismentor?`
@@ -210,6 +217,7 @@ function SetName(bo = false) {
                 <br>
                 <br>
                 <div id="oth">
+                    ${_inject_oth_dept}
                 </div>
                 <br>
                 <br>
@@ -412,9 +420,9 @@ function MoveUp(index){
 }
 
 function setoth() {
-    var val = document.getElementById("depart").value.toLowerCase();
+    var val = document.getElementById("depart").value;
     var _html = "";
-    if (val == "others") {
+    if (val.toLowerCase() == "others") {
         _html = `<input id="others" placeholder="Others" onchange="set_cus_dep()">`;
     }
     document.getElementById("oth").innerHTML = _html;
@@ -460,7 +468,8 @@ function broadArea(bo = false) {
         var _phno = document.getElementById("phno").value;
         var _gra_yr = document.getElementById("grad").value;
         var t_prgm=document.getElementById("_prgm").value;
-        
+        if(document.getElementById("depart").value.toLocaleLowerCase()=="select")
+            return;
         var _max_hold=null;
         var _roll_no=null;
         if(!ismentor)
@@ -763,6 +772,10 @@ function r_page(){
                     <div class="grid-item">${phno}</div>
                     <div class="grid-item r">Year of study</div>
                     <div class="grid-item">${gra_yr}</div>
+                    <div class="grid-item r">Department</div>
+                    <div class="grid-item">${DEPT}</div>
+                    <div class="grid-item r">Roll Number</div>
+                    <div class="grid-item">${roll_no}</div>
                     <div class="grid-item r">Broad areas of expertise</div>
                     <div class="grid-item">${broad_data}</div>
                     <div class="grid-item r">Narrow areas of expertise</div>
@@ -912,7 +925,7 @@ function view(index){
             ${_mentor.linkdin_info=="not given"?"":
                 `${getlink(_mentor.linkdin_info)=="nil"?
                 `<div class="det">LinkedIN ( or check out )${_mentor.linkdin_info}</div>`:
-                `<div class="det">LinkedIN : <a href=${getlink(_mentor.linkdin_info)}>${_mentor.linkdin_info}</a></div>`}
+                `<div class="det">LinkedIN : <a href=${getlink(_mentor.linkdin_info)} target="_blank">${_mentor.linkdin_info}</a></div>`}
                 `
             }
             <div class="det">Phone no : ${_mentor.phno}</div>
