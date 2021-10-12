@@ -81,13 +81,13 @@ function Begin(bo) {
         <div class="dfc" style="justify-content:center;">
             <div class="introbox" style="max-width:90%;">
                 <h2>Mentee Sign-up NITCAA <br> Mentoring Program (NITCAMP) 2021-22</h2>
-<br>- All current NITC students are welcome to fill this form.
-<br>- This form will take no more than 2 minutes to complete.
-<br>- We thank you for your time!
-<br>- We don't sell your personal data to advertisers and we use the information which was shared by you only for the purpose of this mentoring program.
-<br>- This program provides equal opportunity for all those who register and does not discriminate based on gender, religion, caste, language or nationality.
-<br>- If you have questions or would like to know more about NITCAMP, send an email to <a href="mailto:nitcaa.mentoring@gmail.com">nitcaa.mentoring@gmail.com</a>.
-<br>- Please note that filling this form does not assure a mentor. We have a limited number of mentors and we will try to match you with a mentor according to your preferences. Thank you for your interest!
+                <br>- All current NITC students are welcome to fill this form.
+                <br>- This form will take no more than 2 minutes to complete.
+                <br>- Please note that filling this form does not assure a mentor. We have a limited number of mentors and we will try to match you with a mentor according to your preferences. Thank you for your interest!
+                <br>- Please open the <a href="https://docs.google.com/spreadsheets/d/1j0pBhvZnilkLsvktHIOw8m0zWgNWuNoS5yDSk2JC_ZU/edit?usp=sharing" target="_blank">mentor profiles</a> in a new tab, and keep it open for reference as you fill the form. It will be useful when you select your mentors. Make sure that you select mentors that match your areas of interest.
+                <br>- We don't sell your personal data to advertisers and we use the information which was shared by you only for the purpose of this mentoring program.
+                <br>- This program provides equal opportunity for all those who register and does not discriminate based on gender, religion, caste, language or nationality.
+                <br>- If you have questions or would like to know more about NITCAMP, send an email to nitcaa.mentoring@gmail.com.
                 <div class="dfc">
                     <button onclick="StartB()">Back</button>
                     <button onclick="NamePage()">Continue</button>
@@ -201,7 +201,7 @@ function SetName(bo = false) {
                 <div id="oth__prgm"></div>
                 <br>
                 <br>
-                <input id="grad" placeholder="year of study(1-6)" value='${gra_yr}'>
+                <input id="grad" placeholder="year of study(1,2,..)" value='${gra_yr}'>
                 <br>
                 <br>
                 ${ismentor?`
@@ -321,7 +321,8 @@ function SetMandP(bo = false) {
         App.sethtml(`
             <div class="dfc">
                 <div class="introbox">
-                Mentor Selection ( Add upto 5 mentors in order of your preference)
+                Mentor Selection (Add upto 5 mentors in order of your preference).
+                Please open the <a href="https://docs.google.com/spreadsheets/d/1j0pBhvZnilkLsvktHIOw8m0zWgNWuNoS5yDSk2JC_ZU/edit?usp=sharing" target="_blank">mentor profiles</a> in a new tab, and keep it open for reference when you select your mentors. Make sure that you select mentors that match your areas of interest. It is recommended to open the sheet on a computer screen rather than a cell phone screen.
                 <div id="sel_men">
                 ${_html}
                 </div>
@@ -675,7 +676,7 @@ function OthArea(bo = false) {
         <div class="dfc">
             <div class="introbox">
                 <br>
-                Please explain what are your expectations from the mentoring program. We will only use the broad and narrow areas of interest to find appropriate mentors for you. However, we may look at your answer to this question, if we need any clarification. Thus, include as much details as possible.
+                Please explain what are your expectations from the mentoring program. We will only use the broad and narrow areas of interest to find appropriate mentors for you. However, we may look at your answer to this question, if we need any clarification. Thus, include as much details as possible(Answer is mandatory).
                 <br>
                 <br>
                 <input id="oth_area_data" type="text" placeholder="your answer" value='${Oth_area_data}'>
@@ -685,7 +686,7 @@ function OthArea(bo = false) {
                     <button onclick="NarrowArea(true)">Back</button>
                     ${ismentor?
                         `<button onclick="LinkdinData()">Next/Skip</button>`
-                        :`<button onclick="r_page()">Next/Skip</button>`}
+                        :`<button onclick="r_page()">Next</button>`}
                 </div>
             </div>
         </div>
@@ -752,7 +753,7 @@ function getmentor(_i){
 function r_page(){
     var oth_details=document.getElementById("oth_area_data").value;
     if(oth_details.length<1)
-        oth_details="not given";
+        return;
     Oth_area_data=oth_details;
     mentors_in_order="1 - "+ getmentor(0) +" , "
                     +"2 - "+ getmentor(1) +" , "
