@@ -842,6 +842,7 @@ firebase.database().ref("/mentors/").once('value',snap=>{
     snap.forEach((shot)=>{
         _mentors.push(shot.val());
     })
+    _mentors=_mentors.sort((a,b)=>{return a.name>b.name?1:-1})
     MENTORS=_mentors;
     StartB();
 });
