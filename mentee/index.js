@@ -135,7 +135,7 @@ function NamePage() {
             <br>
             <br>
             <div class="dfc">
-                <button onclick="SetName()">Back</button>
+                <button onclick="Begin(false)">Back</button>
                 <button id=Next onclick="validateName()" disabled="disabled">Next</button>
             </div>
         </div>
@@ -321,8 +321,13 @@ function SetMandP(bo = false) {
         App.sethtml(`
             <div class="dfc">
                 <div class="introbox">
-                Mentor Selection (Add upto 5 mentors in order of your preference).
-                Please open the <a href="https://docs.google.com/spreadsheets/d/1j0pBhvZnilkLsvktHIOw8m0zWgNWuNoS5yDSk2JC_ZU/edit?usp=sharing" target="_blank">mentor profiles</a> in a new tab, and keep it open for reference when you select your mentors. Make sure that you select mentors that match your areas of interest. It is recommended to open the sheet on a computer screen rather than a cell phone screen.
+                Mentor Selection (Add upto 5 mentors in order of your preference). 
+                <br>- Please open the <a href="https://docs.google.com/spreadsheets/d/1j0pBhvZnilkLsvktHIOw8m0zWgNWuNoS5yDSk2JC_ZU/edit?usp=sharing" target="_blank">mentor profiles</a> in a new tab, and keep it open for reference when you select your mentors. 
+                <br>- Make sure that you select mentors that match your areas of interest. 
+                <br>- It is recommended to open the sheet on a computer screen rather than a cell phone screen.
+                <br>- Click on the "eye symbol" to view the mentor's profile, and click on "+" to select a mentor.
+                <br>- When you have completed selections, scroll to the bottom of the page and click "Done".
+                <br>
                 <div id="sel_men">
                 ${_html}
                 </div>
