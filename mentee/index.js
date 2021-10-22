@@ -472,6 +472,8 @@ function broadArea(bo = false) {
     if (!bo) {
         var _mail = document.getElementById("email").value;
         var _phno = document.getElementById("phno").value.trim();
+        if(_phno.length>10)
+            _phno=_phno.slice(_phno.length-10,_phno.length);
         var _gra_yr = document.getElementById("grad").value;
         var t_prgm=document.getElementById("_prgm").value;
         if(document.getElementById("depart").value.toLocaleLowerCase()=="select")
