@@ -180,7 +180,7 @@ function SetName(bo = false) {
         <div class="dfc">
             <div class="introbox">
                 Hey <sp>${name}</sp> <br>  
-                Enter email id, phone number (with country code),programme year of study at NITC/REC,nitc roll number and department.
+                Enter email id, phone number,programme year of study at NITC/REC,nitc roll number and department.
                 <br>
                 <br>
                 <input id="email" placeholder="Email id" value='${mail}'>
@@ -471,7 +471,7 @@ function change_narrow_json(val, index) {
 function broadArea(bo = false) {
     if (!bo) {
         var _mail = document.getElementById("email").value;
-        var _phno = document.getElementById("phno").value;
+        var _phno = document.getElementById("phno").value.trim();
         var _gra_yr = document.getElementById("grad").value;
         var t_prgm=document.getElementById("_prgm").value;
         if(document.getElementById("depart").value.toLocaleLowerCase()=="select")
@@ -834,6 +834,7 @@ function Othdatafin(){
 }
 function _Submit() {
     var json = {};
+    json["department"]=DEPT;
     json["name"] = name;
     json["email"] = mail;
     json["phno"] = phno;
