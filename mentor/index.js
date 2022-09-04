@@ -45,7 +45,7 @@ function StartB() {
     App.sethtml(`
     <div class="dfc">
         <div class="introbox">
-            <h2>Mentee/Mentor Sign-up NITCAA <br> Mentoring Program (NITCAMP) 2021-22</h2>
+            <h2>Mentee/Mentor Sign-up NITCAA <br> Mentoring Program (NITCAMP) 2022-23</h2>
             <br><br><h3><center>Fill as <center></h3><br>
             <div class="dfc">
                 <button onclick="Begin(false)">Mentee</button>
@@ -62,7 +62,7 @@ function Begin(bo) {
     App.sethtml(`
     <div class="dfc">
         <div class="introbox">
-            <h2>Alumni/Mentor Sign-up for NITC Alumni <br> Mentoring Program (NITCAMP) 2021-22</h2>
+            <h2>Alumni/Mentor Sign-up for NITC Alumni <br> Mentoring Program (NITCAMP) 2022-23</h2>
             <br>- All NITC/RECC alumni are welcome to fill this form. 
             <br>- This form will take no more than 2 minutes to complete. 
             <br>- We thank you for your time!
